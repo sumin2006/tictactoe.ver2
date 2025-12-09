@@ -29,7 +29,7 @@
 
 | 개선 전 (ver.1) | 최종 (ver.2 - 중앙 정렬 및 심볼 강조) | 승리 화면 |
 | :---: | :---: | :---: |
-| <img src="ver1.png" alt="앱 스크린샷" width="100"><> |  <img src="ver2.png" alt="앱 스크린샷" width="100"> | <img src="win.png" alt="앱 스크린샷" width="100"> |
+| <img src="ver1.png" alt="앱 스크린샷" width="120"> |  <img src="ver2.png" alt="앱 스크린샷" width="120"> | <img src="win.png" alt="앱 스크린샷" width="120"> |
 
 *참고: ver.2는 중앙 정렬 및 X/O 심볼의 크기를 확대하여 직관적인 플레이 환경을 제공합니다.*
 <br><br>
