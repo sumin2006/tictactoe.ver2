@@ -2,12 +2,11 @@ package com.example.tictactoe
 
 import androidx.compose.ui.graphics.Color
 
-// 승리 라인 저장을 위한 타입 정의 (행, 열의 쌍 리스트) ⬅️ 추가
 typealias WinningLine = List<Pair<Int, Int>>
 
 // 1. 플레이어 정의
 enum class Player(val color: Color, val symbol: String) {
-    // 플레이어 색상 코드를 직관적으로 변경 (UI 코드와 일치)
+    // 플레이어 색상 코드를 직관적으로 변경
     RED(Color(0xFFE53935), "O"),    // 빨강 O
     BLUE(Color(0xFF1E88E5), "X");   // 파랑 X
 
@@ -22,10 +21,10 @@ data class GameState(
     val currentPlayer: Player = Player.RED, // 1P(RED)가 먼저 시작
     val winner: Player? = null,
     val isGameOver: Boolean = false,
-    val winningLine: WinningLine? = null // ⬅️ WinningLine 타입 사용
+    val winningLine: WinningLine? = null
 )
 
-// 3-A. 승리 라인 좌표를 반환하는 함수 ⬅️ 추가
+// 3-A. 승리 라인 좌표를 반환하는 함수
 fun getWinningLine(board: Board): WinningLine? {
     val lines: List<WinningLine> = listOf(
         // 가로줄 (Rows)

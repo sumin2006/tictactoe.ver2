@@ -28,9 +28,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.foundation.layout.Arrangement // ⬅️ 추가
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.runtime.MutableState
+import androidx.compose.ui.text.style.TextAlign
+
 
 @Composable
+
 fun GameScreen() {
+    // [사용자 정보 바] 바로 아래 또는 Composable 함수 시작 부분에 추가
+
+// 사용자(X)의 승리 횟수
+    var xWins by remember { mutableStateOf(0) }
+// 상대방(O)의 승리 횟수
+    var oWins by remember { mutableStateOf(0) }
+// 무승부 횟수
+    var draws by remember { mutableStateOf(0) }
     var gameState by remember { mutableStateOf(GameState()) }
 
     Column(
@@ -40,12 +53,32 @@ fun GameScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center // ⬅️ 중앙 정렬 추가
     ) {
+        Text(
+            text = "by [차수민] - Jetpack Compose Project",
+            modifier = Modifier
+                .fillMaxWidth() // 가로 전체 채우기
+                .background(Color(0xFF333333)) // 어두운 배경색
+                .padding(vertical = 10.dp), // 상하 패딩 추가
+            color = Color.White,
+            textAlign = TextAlign.Center, // 텍스트 중앙 정렬
+            style = MaterialTheme.typography.bodySmall // 작은 글꼴 사용 (Material 3 기준)
+        )
 
         val headerText = when {
             gameState.winner != null -> "${gameState.winner!!.symbol} 승리!"
             gameState.isGameOver -> "무승부!"
             // 텍스트에서 '빨강'/'파랑' 대신 심볼만 표시하도록 단순화
             else -> "${gameState.currentPlayer.symbol} 차례"
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp, vertical = 8.dp),
+            horizontalArrangement = Arrangement.SpaceAround // 요소들을 좌우로 분산 배치
+        ) {
+            Text(text = "X Wins: $xWins", fontWeight = FontWeight.Bold, color = Color.Blue)
+            Text(text = "Draws: $draws", color = Color.Gray)
+            Text(text = "O Wins: $oWins", fontWeight = FontWeight.Bold, color = Color.Red)
         }
 
         // 텍스트 크기 확대 및 중앙에 표시되도록 배치
